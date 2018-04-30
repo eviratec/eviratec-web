@@ -15,8 +15,22 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
+require_once 'query.php';
 
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
+function createEvent ( $summary = 'Did/went/found ...' ) {
+  $event_id = null;
+
+  return $event_id;
+}
+
+function setEventSummary ( $event_id, $new_value ) {
+
+}
+
+function setEventTags ( $event_id, $new_value ) {
+
+}
+
+function deleteEvent ( $event_id ) {
+
+}

@@ -15,8 +15,54 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
+require_once 'query.php';
 
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
+function createWorkout ( $summary = 'New Workout' ) {
+  $workout_id = null;
+
+  return $workout_id;
+}
+
+function createExercise ( $workout_id, $exercise_type_id ) {
+  $exercise_id = null;
+
+  return $exercise_id;
+}
+
+function createEntry ( $exercise_id, $sets, $reps, $weight, $date = null ) {
+  $entry_id = null;
+
+  if (null === $date) {
+    $date = now();
+  }
+
+  return $entry_id;
+}
+
+function setEntrySets ( $entry_id, $new_value ) {
+
+}
+
+function setEntryReps ( $entry_id, $new_value ) {
+
+}
+
+function setEntryWeight ( $entry_id, $new_value ) {
+
+}
+
+function setEntryDate ( $entry_id, $new_value ) {
+
+}
+
+function deleteWorkout ( $workout_id ) {
+
+}
+
+function deleteExercise ( $exercise_id ) {
+
+}
+
+function deleteEntry ( $entry_id ) {
+
+}

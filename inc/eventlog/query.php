@@ -15,8 +15,27 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
+class EventLogQuery {
+  public function __construct () {
 
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
+  }
+  public static function getEvents ( $query = array() ) {
+    return new WP_Query( array_merge(
+      array ( 'posts_per_page' => 20 ),
+      $query,
+      array(
+        'post_type'      => 'event',
+        'author'         => wp_get_current_user()->ID,
+        // 'meta_key'       => 'display_order',
+        // 'orderby'        => 'meta_value',
+        // 'order'          => 'ASC'
+      )
+    ) );
+  }
+  public static function getEventsByTag ( $tag_id, $query = array() ) {
+
+  }
+  public static function getTags ( $query = array() ) {
+
+  }
+}

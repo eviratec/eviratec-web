@@ -15,20 +15,16 @@ get_header();
 
       <h1>Event Log &gt; <?php the_title(); ?></h1>
 
+
       <?php
-      $events = new WP_Query( array(
-        'post_type'      => 'event',
-        'posts_per_page' => 20,
-        'author'         => wp_get_current_user()->ID,
-        // 'meta_key'       => 'display_order',
-        // 'orderby'        => 'meta_value',
-        // 'order'          => 'ASC'
-      ) );
+      $events = EventLogQuery::getEvents();
       ?>
 
-      <button id="LogEvent">
+      <!-- <button id="LogEvent">
         New Event
-      </button>
+      </button> -->
+
+      <?php get_template_part( 'parts/forms/create-event' ); ?>
 
       <?php if ($events->have_posts()) : ?>
       <div class="content-cards">
@@ -37,7 +33,7 @@ get_header();
           <?php $events->the_post(); ?>
             <li class="card">
               <a class="card-content"
-                href="<?php the_permalink(); ?>"
+                href="/event/<?php the_ID(); ?>"
                 title="<?php the_title(); ?>">
                 <div class="icon-container">
                   <span class="material-icons">

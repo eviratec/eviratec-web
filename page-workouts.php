@@ -16,19 +16,14 @@ get_header();
       <h1>Fitness &gt; <?php the_title(); ?></h1>
 
       <?php
-      $workouts = new WP_Query( array(
-        'post_type'      => 'workout',
-        'posts_per_page' => 20,
-        'author'         => wp_get_current_user()->ID,
-        // 'meta_key'       => 'display_order',
-        // 'orderby'        => 'meta_value',
-        // 'order'          => 'ASC'
-      ) );
+      $workouts = FitnessQuery::getWorkouts();
       ?>
 
-      <button id="CreateWorkout">
+      <!-- <button id="CreateWorkout">
         New Workout
-      </button>
+      </button> -->
+
+      <?php get_template_part( 'parts/forms/create-workout' ); ?>
 
       <?php if ($workouts->have_posts()) : ?>
       <div class="content-cards">
@@ -37,7 +32,7 @@ get_header();
           <?php $workouts->the_post(); ?>
             <li class="card">
               <a class="card-content"
-                href="<?php the_permalink(); ?>"
+                href="/workout/<?php the_ID(); ?>"
                 title="<?php the_title(); ?>">
                 <div class="icon-container">
                   <span class="material-icons">
