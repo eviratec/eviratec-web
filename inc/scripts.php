@@ -15,11 +15,34 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'scripts.php';
-require_once 'styles.php';
+add_action("init", "eviratec_web_enqueue_scripts");
 
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
+function eviratec_web_enqueue_admin_scripts () {
+  if (is_admin()) {
+    eviratec_web_enqueue_admin_authed_scripts();
+  }
+}
 
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
+function eviratec_web_enqueue_admin_authed_scripts () {
+
+}
+
+function eviratec_web_enqueue_scripts () {
+  if (is_admin()) {
+    return eviratec_web_enqueue_admin_scripts();
+  }
+  wp_enqueue_script(
+    "main-js",
+    get_stylesheet_directory_uri() . "/main.js",
+    array( "jquery" ),
+    "1.0.0",
+    false
+  );
+  wp_localize_script(
+    'main-js',
+    'eviratec_web_ajax_object',
+    array(
+      'ajax_url' => admin_url( 'admin-ajax.php' )
+    )
+  );
+}

@@ -104,6 +104,10 @@ input:focus {
 
 }
 
+.spacer {
+  flex: auto;
+}
+
 /*------------------------------------*\
     PAGES
 \*------------------------------------*/
@@ -117,6 +121,50 @@ div.eviratec-web.eviratec-form p.form-title {
   margin: 0;
   font-size: 1.4em;
   font-weight: 300;
+}
+
+/* */
+.content-cards {
+
+}
+.content-cards ul.cards {
+  padding: 0;
+  list-style-type: none;
+}
+.content-cards ul.cards li.card a.card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  padding: 8px 0;
+}
+.content-cards ul.cards li.card a.card-content .icon-container {
+  max-height: 24px;
+}
+.content-cards ul.cards li.card a.card-content h3 {
+  margin: 0;
+  display: flex;
+  flex: auto;
+  padding-left: 16px;
+  align-items: center;
+  font-weight: 400;
+}
+.content-cards ul.cards li.card a.card-content .card-text {
+  flex: auto;
+  padding: 8px;
+}
+.content-cards ul.cards li.card a.card-content .card-text p {
+  margin: 0;
+}
+#respond .comment-reply-title {
+  display: none;
+}
+#respond .logged-in-as {
+  display: none;
+}
+#respond .comment-form-comment {
+  display: flex;
+  flex-direction: column;
 }
 
 

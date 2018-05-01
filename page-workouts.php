@@ -40,21 +40,16 @@ get_header();
                 title="<?php the_title(); ?>">
                 <div class="icon-container">
                   <span class="material-icons">
-                    info_outline
+                    fitness_center
                   </span>
                 </div>
-                <h2>
+                <h3>
                   <span><?php echo get_the_title(); ?></span>
                   <span class="spacer"></span>
                   <span class="material-icons">
                     chevron_right
                   </span>
-                </h2>
-                <div class="card-text">
-                  <p>
-                    ...
-                  </p>
-                </div>
+                </h3>
               </a>
             </li>
           <?php endwhile; ?>

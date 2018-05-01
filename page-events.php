@@ -50,11 +50,6 @@ get_header();
                     chevron_right
                   </span>
                 </h2>
-                <div class="card-text">
-                  <p>
-                    ...
-                  </p>
-                </div>
               </a>
             </li>
           <?php endwhile; ?>
