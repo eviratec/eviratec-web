@@ -1,3 +1,12 @@
+<?php
+
+  if ('create-workout' === $_REQUEST['form-id']) {
+    FitnessCmd::createWorkout(
+      $_REQUEST['WorkoutSummary']
+    );
+  }
+
+?>
 <div id="CreateWorkoutForm"
   class="eviratec-web eviratec-form">
   <form>

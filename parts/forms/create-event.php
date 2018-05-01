@@ -1,3 +1,13 @@
+<?php
+
+  if ('create-event' === $_REQUEST['form-id']) {
+    EventLogCmd::createEvent(
+      $_REQUEST['EventSummary'],
+      json_decode( $_REQUEST['EventTags'] )
+    );
+  }
+
+?>
 <div id="CreateEventForm"
   class="eviratec-web eviratec-form">
   <form>

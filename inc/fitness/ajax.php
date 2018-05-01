@@ -15,7 +15,32 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'query.php';
-require_once 'cmd.php';
+add_action( 'wp_ajax_nopriv_eviratec_fitness', 'eviratec_fitness_nopriv' );
+add_action( 'wp_ajax_eviratec_fitness', 'eviratec_fitness' );
 
-require_once 'ajax.php';
+function eviratec_fitness_nopriv () {
+  $response = json_encode( $_REQUEST );
+  header("Content-Type: application/json;charset=utf-8");
+  print json_encode([
+    "Error" => "Login required",
+    "Echo" => $response,
+  ]);
+  wp_die();
+}
+
+function eviratec_fitness () {
+  $response = json_encode( $_REQUEST );
+  header("Content-Type: application/json;charset=utf-8");
+  try {
+    print json_encode([
+      "Echo" => $response,
+    ]);
+  }
+  catch (Exception $e) {
+    print json_encode([
+      "Error" => true,
+      "Message" => $e->getMessage(),
+    ]);
+  }
+  wp_die();
+}
