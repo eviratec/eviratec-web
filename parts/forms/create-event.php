@@ -15,6 +15,8 @@
       Summary
     </label>
 
+    <span class="spacer"></span>
+
     <input id="EventSummary"
       name="EventSummary"
       placeholder="E.g. Went to Walmart"
@@ -26,6 +28,8 @@
     <label for="EventTags">
       Tags (optional)
     </label>
+
+    <span class="spacer"></span>
 
     <input id="EventTags"
       name="EventTags"

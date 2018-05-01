@@ -20,6 +20,8 @@
       Sets
     </label>
 
+    <span class="spacer"></span>
+
     <input id="EntrySets"
       name="EntrySets"
       type="number"
@@ -32,6 +34,8 @@
     <label for="EntryReps">
       Reps
     </label>
+
+    <span class="spacer"></span>
 
     <input id="EntryReps"
       name="EntryReps"
@@ -46,6 +50,8 @@
       Weight (Units)
     </label>
 
+    <span class="spacer"></span>
+
     <input id="EntryWeightUnits"
       name="EntryWeightUnits"
       type="number"
@@ -58,6 +64,8 @@
     <label for="EntryWeightMeasurement">
       Weight (Measurement)
     </label>
+
+    <span class="spacer"></span>
 
     <select id="EntryWeightMeasurement"
       name="EntryWeightMeasurement">

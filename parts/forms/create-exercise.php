@@ -23,6 +23,7 @@
       Exercise Type
     </label>
 
+    <span class="spacer"></span>
     <?php $exercise_types = FitnessQuery::getExerciseTypes(); ?>
 
     <select id="ExerciseType"
@@ -42,6 +43,8 @@
     <label for="OtherExerciseType">
       Exercise Type (other)
     </label>
+
+    <span class="spacer"></span>
 
     <input id="OtherExerciseType"
       name="OtherExerciseType"

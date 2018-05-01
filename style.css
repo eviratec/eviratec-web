@@ -280,6 +280,8 @@ form input[type=submit] {
 }
 div.eviratec-web.eviratec-form div.form-field {
   margin-bottom: 16px;
+  display: flex;
+  font-size: 1.3em;
 }
 
 

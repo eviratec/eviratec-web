@@ -21,7 +21,7 @@ class FitnessQuery {
   }
   public static function getWorkouts ( $query = array() ) {
     return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 20 ),
+      array ( 'posts_per_page' => 101 ),
       $query,
       array(
         'post_type'      => 'workout',
@@ -31,7 +31,7 @@ class FitnessQuery {
   }
   public static function getExercisesByWorkout ( $workout_id, $query = array() ) {
     return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 20 ),
+      array ( 'posts_per_page' => 101 ),
       $query,
       array(
         'post_type'      => 'workout_exercise',
@@ -43,7 +43,7 @@ class FitnessQuery {
   }
   public static function getEntriesByExercise ( $exercise_id, $query = array() ) {
     return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 20 ),
+      array ( 'posts_per_page' => 101 ),
       $query,
       array(
         'post_type'      => 'workout_entry',
@@ -55,7 +55,7 @@ class FitnessQuery {
   }
   public static function getExercisesByExerciseType ( $exercise_type_id, $query = array() ) {
     return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 20 ),
+      array ( 'posts_per_page' => 101 ),
       $query,
       array(
         'post_type'      => 'workout',
@@ -67,7 +67,7 @@ class FitnessQuery {
   }
   public static function getExerciseTypes ( $query = array() ) {
     return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 20 ),
+      array ( 'posts_per_page' => 101 ),
       $query,
       array(
         'post_type'      => 'exercise_type',

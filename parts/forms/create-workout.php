@@ -14,6 +14,8 @@
       Summary
     </label>
 
+    <span class="spacer"></span>
+
     <input id="WorkoutSummary"
       name="WorkoutSummary"
       placeholder="E.g. Leg Day (wk 11)"
