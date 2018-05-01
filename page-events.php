@@ -19,6 +19,8 @@ get_header();
         New Event
       </button> -->
 
+      <h2>Create Event</h2>
+
       <form>
         <?php get_template_part( 'parts/forms/create-event' ); ?>
       </form>
@@ -43,13 +45,18 @@ get_header();
                     info_outline
                   </span>
                 </div>
-                <h2>
+                <h3>
                   <span><?php echo get_the_title(); ?></span>
-                  <span class="spacer"></span>
-                  <span class="material-icons">
-                    chevron_right
-                  </span>
-                </h2>
+                </h3>
+                <div class="card-text">
+                  <p>
+                    <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
+                  </p>
+                </div>
+                <span class="spacer"></span>
+                <span class="material-icons">
+                  chevron_right
+                </span>
               </a>
             </li>
           <?php endwhile; ?>

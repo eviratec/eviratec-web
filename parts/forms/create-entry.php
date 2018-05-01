@@ -15,8 +15,6 @@
 ?>
 <div id="CreateEntryForm"
   class="eviratec-web eviratec-form">
-  <p class="form-title">Create Entry</p>
-
   <div class="form-field">
     <label for="EntrySets">
       Sets

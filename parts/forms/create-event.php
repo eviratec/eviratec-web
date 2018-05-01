@@ -10,8 +10,6 @@
 ?>
 <div id="CreateEventForm"
   class="eviratec-web eviratec-form">
-  <p class="form-title">Create Event</p>
-
   <div class="form-field">
     <label for="EventSummary">
       Summary

@@ -19,6 +19,8 @@ get_header();
         New Workout
       </button> -->
 
+      <h2>Create Workout</h2>
+
       <form>
         <?php get_template_part( 'parts/forms/create-workout' ); ?>
       </form>
@@ -45,11 +47,11 @@ get_header();
                 </div>
                 <h3>
                   <span><?php echo get_the_title(); ?></span>
-                  <span class="spacer"></span>
-                  <span class="material-icons">
-                    chevron_right
-                  </span>
                 </h3>
+                <span class="spacer"></span>
+                <span class="material-icons">
+                  chevron_right
+                </span>
               </a>
             </li>
           <?php endwhile; ?>

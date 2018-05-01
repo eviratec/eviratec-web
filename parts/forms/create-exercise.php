@@ -18,8 +18,6 @@
 ?>
 <div id="CreateExerciseForm"
   class="eviratec-web eviratec-form">
-  <p class="form-title">Create Exercise</p>
-
   <div class="form-field">
     <label for="ExerciseType">
       Exercise Type

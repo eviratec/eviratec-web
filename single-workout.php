@@ -12,6 +12,8 @@
       New Workout
     </button> -->
 
+    <h2>Create Exercise</h2>
+
     <form>
       <?php get_template_part( 'parts/forms/create-exercise' ); ?>
       <input name="ExerciseWorkoutID"
@@ -42,11 +44,11 @@
               </div>
               <h3>
                 <span><?php echo get_the_title(); ?></span>
-                <span class="spacer"></span>
-                <span class="material-icons">
-                  chevron_right
-                </span>
               </h3>
+              <span class="spacer"></span>
+              <span class="material-icons">
+                chevron_right
+              </span>
             </a>
           </li>
         <?php endwhile; ?>

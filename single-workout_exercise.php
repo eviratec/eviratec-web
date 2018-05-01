@@ -19,6 +19,8 @@
       New Workout
     </button> -->
 
+    <h2>Create Entry</h2>
+
     <form>
       <?php get_template_part( 'parts/forms/create-entry' ); ?>
       <input name="EntryExerciseID"

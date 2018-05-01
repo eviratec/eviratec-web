@@ -9,8 +9,6 @@
 ?>
 <div id="CreateWorkoutForm"
   class="eviratec-web eviratec-form">
-  <p class="form-title">Create Workout</p>
-
   <div class="form-field">
     <label for="WorkoutSummary">
       Summary
