@@ -15,15 +15,19 @@ get_header();
 
       <h1>Fitness &gt; <?php the_title(); ?></h1>
 
-      <?php
-      $workouts = FitnessQuery::getWorkouts();
-      ?>
-
       <!-- <button id="CreateWorkout">
         New Workout
       </button> -->
 
-      <?php get_template_part( 'parts/forms/create-workout' ); ?>
+      <form>
+        <?php get_template_part( 'parts/forms/create-workout' ); ?>
+      </form>
+
+      <h2>Workouts</h2>
+
+      <?php
+      $workouts = FitnessQuery::getWorkouts();
+      ?>
 
       <?php if ($workouts->have_posts()) : ?>
       <div class="content-cards">
@@ -32,7 +36,7 @@ get_header();
           <?php $workouts->the_post(); ?>
             <li class="card">
               <a class="card-content"
-                href="/workout/<?php the_ID(); ?>"
+                href="/workout/<?php the_ID(); ?>/"
                 title="<?php the_title(); ?>">
                 <div class="icon-container">
                   <span class="material-icons">

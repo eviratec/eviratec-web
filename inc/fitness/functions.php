@@ -17,5 +17,6 @@
 
 require_once 'query.php';
 require_once 'cmd.php';
+require_once 'rewrites.php';
 
 require_once 'ajax.php';

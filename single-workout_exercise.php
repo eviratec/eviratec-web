@@ -6,50 +6,48 @@
 
   <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-    <h1><a href="/workouts/">Workouts</a> &gt; <?php the_title(); ?></h1>
+    <h1>
+      <a href="/workout/<?php echo get_post_meta( get_the_ID(), 'workout_id' )[0]; ?>/"
+        title="<?php echo get_the_title( get_post_meta( get_the_ID(), 'workout_id' )[0] ); ?>">
+        <?php echo get_the_title( get_post_meta( get_the_ID(), 'workout_id' )[0] ); ?>
+      </a>
+      &gt;
+      <?php the_title(); ?>
+    </h1>
 
     <!-- <button id="CreateWorkout">
       New Workout
     </button> -->
 
     <form>
-      <?php get_template_part( 'parts/forms/create-exercise' ); ?>
-      <input name="ExerciseWorkoutID"
+      <?php get_template_part( 'parts/forms/create-entry' ); ?>
+      <input name="EntryExerciseID"
         type="hidden"
         value="<?php the_ID(); ?>">
     </form>
 
     <?php
-    $workout_id = get_the_ID();
-    $exercises = FitnessQuery::getExercisesByWorkout( $workout_id );
+    $exercise_id = get_the_ID();
+    $entries = FitnessQuery::getEntriesByExercise( $exercise_id );
     ?>
 
     <h2>Exercises</h2>
 
-    <?php if ($exercises->have_posts()) : ?>
+    <?php if ($entries->have_posts()) : ?>
     <div class="content-cards">
       <ul class="cards">
-      <?php while ($exercises->have_posts()) : ?>
-        <?php $exercises->the_post(); ?>
+      <?php while ($entries->have_posts()) : ?>
+        <?php $entries->the_post(); ?>
           <li class="card">
             <a class="card-content"
-              href="/exercise/<?php the_ID(); ?>/"
+              href="/entry/<?php the_ID(); ?>/"
               title="<?php the_title(); ?>">
-              <div class="icon-container">
-                <span class="material-icons">
-                  info_outline
-                </span>
-              </div>
-              <h2>
-                <span><?php echo get_the_title(); ?></span>
-                <span class="spacer"></span>
-                <span class="material-icons">
-                  chevron_right
-                </span>
-              </h2>
               <div class="card-text">
                 <p>
-                  ...
+                  Sets: <?php echo get_post_meta( get_the_ID(), 'entry_sets' )[0]; ?>
+                  Reps: <?php echo get_post_meta( get_the_ID(), 'entry_reps' )[0]; ?>
+                  Weight: <?php echo json_decode(get_post_meta( get_the_ID(), 'entry_weight' )[0])->Units; ?><?php echo json_decode(get_post_meta( get_the_ID(), 'entry_weight' )[0])->Measurement; ?>
+                  Date: <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
                 </p>
               </div>
             </a>
@@ -59,7 +57,7 @@
       </ul>
     </div>
     <?php else : ?>
-    <p>You haven't added any exercises to this workout.</p>
+    <p>You haven't added any entries for this exercise.</p>
     <?php endif; ?>
 
     <!-- article -->

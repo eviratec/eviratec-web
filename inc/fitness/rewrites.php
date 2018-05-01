@@ -15,8 +15,9 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'query.php';
-require_once 'cmd.php';
-require_once 'rewrites.php';
-
-require_once 'ajax.php';
+function fitness_rewrite () {
+  add_rewrite_rule('^workout/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top');
+  add_rewrite_rule('^exercise/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top');
+  add_rewrite_rule('^entry/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top');
+}
+add_action('init', 'fitness_rewrite');

@@ -41,6 +41,18 @@ class FitnessQuery {
       )
     ) );
   }
+  public static function getEntriesByExercise ( $exercise_id, $query = array() ) {
+    return new WP_Query( array_merge(
+      array ( 'posts_per_page' => 20 ),
+      $query,
+      array(
+        'post_type'      => 'workout_entry',
+        'author'         => wp_get_current_user()->ID,
+        'meta_key'       => 'exercise_id',
+        'meta_value'     => $exercise_id,
+      )
+    ) );
+  }
   public static function getExercisesByExerciseType ( $exercise_type_id, $query = array() ) {
     return new WP_Query( array_merge(
       array ( 'posts_per_page' => 20 ),

@@ -15,16 +15,19 @@ get_header();
 
       <h1>Event Log &gt; <?php the_title(); ?></h1>
 
-
-      <?php
-      $events = EventLogQuery::getEvents();
-      ?>
-
       <!-- <button id="LogEvent">
         New Event
       </button> -->
 
-      <?php get_template_part( 'parts/forms/create-event' ); ?>
+      <form>
+        <?php get_template_part( 'parts/forms/create-event' ); ?>
+      </form>
+
+      <h2>Events</h2>
+
+      <?php
+      $events = EventLogQuery::getEvents();
+      ?>
 
       <?php if ($events->have_posts()) : ?>
       <div class="content-cards">
@@ -33,7 +36,7 @@ get_header();
           <?php $events->the_post(); ?>
             <li class="card">
               <a class="card-content"
-                href="/event/<?php the_ID(); ?>"
+                href="/event/<?php the_ID(); ?>/"
                 title="<?php the_title(); ?>">
                 <div class="icon-container">
                   <span class="material-icons">
