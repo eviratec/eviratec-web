@@ -217,6 +217,18 @@ div.eviratec-web.eviratec-form p.form-title {
 .content-cards ul.cards {
   padding: 0;
   list-style-type: none;
+}
+.content-cards ul.cards li.card-group-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  padding: 16px;
+}
+.content-cards ul.cards li.card-group-heading h3 {
+  margin: 0;
+}
+.content-cards ul.cards li.card {
   background: #fff;
 }
 .content-cards ul.cards li.card a.card-content {
@@ -224,7 +236,7 @@ div.eviratec-web.eviratec-form p.form-title {
   flex-direction: row;
   align-items: center;
   border-bottom: 1px solid rgba(0,0,0,0.12);
-  padding: 8px 16px;
+  padding: 16px;
 }
 .content-cards ul.cards li.card a.card-content .icon-container {
   max-height: 24px;
@@ -237,7 +249,7 @@ div.eviratec-web.eviratec-form p.form-title {
   font-weight: 400;
 }
 .content-cards ul.cards li.card a.card-content .card-text {
-  padding: 8px;
+
 }
 .content-cards ul.cards li.card a.card-content .card-text p {
   margin: 0;
