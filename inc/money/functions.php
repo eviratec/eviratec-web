@@ -15,15 +15,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'security.php';
+require_once 'query.php';
+require_once 'cmd.php';
+require_once 'rewrites.php';
 
-require_once 'scripts.php';
-require_once 'styles.php';
-
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
-require_once 'types.money.php';
-
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
-require_once 'money/functions.php';
+// require_once 'ajax.php';

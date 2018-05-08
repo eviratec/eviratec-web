@@ -15,10 +15,10 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-add_action( 'wp_ajax_nopriv_eviratec_eventlog', 'eviratec_eventlog_nopriv_ajax' );
-add_action( 'wp_ajax_eviratec_eventlog', 'eviratec_eventlog_ajax' );
+add_action( 'wp_ajax_nopriv_eviratec_money', 'eviratec_money_nopriv_ajax' );
+add_action( 'wp_ajax_eviratec_money', 'eviratec_money_ajax' );
 
-function eviratec_eventlog_nopriv_ajax () {
+function eviratec_money_nopriv_ajax () {
   $response = json_encode( $_REQUEST );
 
   header( 'Content-Type: application/json;charset=utf-8' );
@@ -31,24 +31,24 @@ function eviratec_eventlog_nopriv_ajax () {
   wp_die();
 }
 
-// wp-admin/admin-ajax.php?action=eviratec_eventlog
-function eviratec_eventlog_ajax () {
+// wp-admin/admin-ajax.php?action=eviratec_money
+function eviratec_money_ajax () {
   $response = json_encode( $_REQUEST );
 
 
 
   try {
     switch ( $_REQUEST['type'] ) {
-      case 'createEvent':
-        $response = EventLogCmd::createEvent(
+      case 'createWallet':
+        $response = MoneyCmd::createWallet(
            $_REQUEST['summary'],
            explode( ',', $_REQUEST['tags'] )
         );
         break;
 
-      case 'getEvents':
+      case 'getTransactionsByWallet':
         // &type=getEvents&offset=8
-        $events = EventLogQuery::getEvents( [
+        $events = MoneyQuery::getTransactionsByWallet( [
           'offset' => $_REQUEST['offset'],
         ] );
         // $response = [
@@ -67,7 +67,7 @@ function eviratec_eventlog_ajax () {
               </h3>
             </li>
             <?php endif; ?>
-            <?php get_template_part( 'parts/lists/event-list-item'); ?>
+            <?php get_template_part( 'parts/lists/transaction-list-item'); ?>
           <?php endwhile; endif; ?>
       <?php
       wp_die();

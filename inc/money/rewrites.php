@@ -15,15 +15,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'security.php';
-
-require_once 'scripts.php';
-require_once 'styles.php';
-
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
-require_once 'types.money.php';
-
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
-require_once 'money/functions.php';
+function money_rewrite () {
+  add_rewrite_rule( '^wallet/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top' );
+  add_rewrite_rule( '^transaction/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top' );
+}
+add_action( 'init', 'money_rewrite' );

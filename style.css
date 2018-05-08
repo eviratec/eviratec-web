@@ -305,9 +305,9 @@ ul#DashboardMenu {
 ul#DashboardMenu li.dashboard-menu-item {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  flex: 1;
-  margin: 0 8px;
+  width: 45%;
+  flex: auto;
+  margin: 8px;
 }
 ul#DashboardMenu li.dashboard-menu-item a {
   display: flex;

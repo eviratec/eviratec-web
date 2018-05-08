@@ -15,15 +15,30 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-require_once 'security.php';
+class MoneyQuery {
+  public function __construct () {
 
-require_once 'scripts.php';
-require_once 'styles.php';
-
-require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
-require_once 'types.money.php';
-
-require_once 'eventlog/functions.php';
-require_once 'fitness/functions.php';
-require_once 'money/functions.php';
+  }
+  public static function getWallets ( $query = array() ) {
+    return new WP_Query( array_merge(
+      array ( 'posts_per_page' => 100 ),
+      $query,
+      array(
+        'post_type'      => 'wallet',
+        'author'         => wp_get_current_user()->ID,
+      )
+    ) );
+  }
+  public static function getTransactionsByWallet ( $wallet_id, $query = array() ) {
+    return new WP_Query( array_merge(
+      array ( 'posts_per_page' => 100 ),
+      $query,
+      array(
+        'post_type'      => 'wallet_tx',
+        'author'         => wp_get_current_user()->ID,
+        'meta_key'       => 'wallet_id',
+        'meta_value'     => $wallet_id,
+      )
+    ) );
+  }
+}
