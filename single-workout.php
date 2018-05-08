@@ -8,6 +8,19 @@
 
     <h1><a href="/workouts/">Workouts</a> &gt; <?php the_title(); ?></h1>
 
+    <p style="margin-top: -12px;margin-left: 12px;">
+      <span class="date"
+        style="display:flex;align-items:center;color:rgba(0,0,0,0.38);">
+        <span class="material-icons"
+          style="font-size: 16px;">
+          event
+        </span>
+        <span style="font-weight: 400;margin-left: 4px;">
+          <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
+        </span>
+      </span>
+    </p>
+
     <!-- <button id="CreateWorkout">
       New Workout
     </button> -->

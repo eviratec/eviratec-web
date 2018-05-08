@@ -1,7 +1,7 @@
 <?php
 
-if ( !is_user_logged_in() ) {
-  wp_redirect( "/login" );
+if ( is_user_logged_in() ) {
+  wp_redirect( "/dashboard" );
   exit;
 }
 
@@ -13,7 +13,7 @@ get_header();
     <!-- section -->
     <section>
 
-      <h1>My Profile</h1>
+      <h1>Create Account</h1>
 
       <?php if (have_posts()): while (have_posts()) : the_post(); ?>
       <div class="page-section-wrapper">

@@ -6,7 +6,7 @@
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
  *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+ * THE SOFTWARE IS PROVIDED 'AS IS' AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
@@ -15,32 +15,56 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-add_action( 'wp_ajax_nopriv_eviratec_eventlog', 'eviratec_eventlog_nopriv' );
-add_action( 'wp_ajax_eviratec_eventlog', 'eviratec_eventlog' );
+add_action( 'wp_ajax_nopriv_eviratec_eventlog', 'eviratec_eventlog_nopriv_ajax' );
+add_action( 'wp_ajax_eviratec_eventlog', 'eviratec_eventlog_ajax' );
 
-function eviratec_eventlog_nopriv () {
+function eviratec_eventlog_nopriv_ajax () {
   $response = json_encode( $_REQUEST );
-  header("Content-Type: application/json;charset=utf-8");
+
+  header( 'Content-Type: application/json;charset=utf-8' );
+
   print json_encode([
-    "Error" => "Login required",
-    "Echo" => $response,
+    'Error' => 'Login required',
+    'Echo' => $response,
   ]);
+  
   wp_die();
 }
 
-function eviratec_eventlog () {
+// wp-admin/admin-ajax.php?action=eviratec_eventlog
+function eviratec_eventlog_ajax () {
   $response = json_encode( $_REQUEST );
-  header("Content-Type: application/json;charset=utf-8");
+
+  header( 'Content-Type: application/json;charset=utf-8' );
+
   try {
-    print json_encode([
-      "Echo" => $response,
-    ]);
+    switch ( $_REQUEST['type'] ) {
+      case 'createEvent':
+        $response = EventLogCmd::createEvent(
+           $_REQUEST['summary'],
+           explode( ',', $_REQUEST['tags'] )
+        );
+        break;
+
+      case 'getEvents':
+        // &type=getEvents&offset=8
+        $response = EventLogQuery::getEvents( [
+          'offset' => $_REQUEST['offset'],
+        ] );
+    }
+
+    print json_encode( [
+      'Success' => true,
+      'Result' => $response,
+      'Echo' => json_encode( $_REQUEST ),
+    ] );
   }
   catch (Exception $e) {
-    print json_encode([
-      "Error" => true,
-      "Message" => $e->getMessage(),
-    ]);
+    print json_encode( [
+      'Error' => true,
+      'Message' => $e->getMessage(),
+    ] );
   }
+
   wp_die();
 }

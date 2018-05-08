@@ -15,6 +15,19 @@
       <?php the_title(); ?>
     </h1>
 
+    <p style="margin-top: -12px;margin-left: 12px;">
+      <span class="date"
+        style="display:flex;align-items:center;color:rgba(0,0,0,0.38);">
+        <span class="material-icons"
+          style="font-size: 16px;">
+          event
+        </span>
+        <span style="font-weight: 400;margin-left: 4px;">
+          <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
+        </span>
+      </span>
+    </p>
+
     <!-- <button id="CreateWorkout">
       New Workout
     </button> -->
@@ -50,11 +63,34 @@
                 </span>
               </div>
               <div class="card-text">
+                <ul class="workout exercise-entry-stats">
+                  <li class="exercise-entry-stat">
+                    <span class="stat-value">
+                      <?php echo get_post_meta( get_the_ID(), 'entry_sets' )[0]; ?>
+                    </span>
+                    <span class="stat-label">
+                      Sets
+                    </span>
+                  </li>
+                  <li class="exercise-entry-stat">
+                    <span class="stat-value">
+                      <?php echo get_post_meta( get_the_ID(), 'entry_reps' )[0]; ?>
+                    </span>
+                    <span class="stat-label">
+                      Reps
+                    </span>
+                  </li>
+                  <li class="exercise-entry-stat">
+                    <span class="stat-value">
+                      <?php echo json_decode(get_post_meta( get_the_ID(), 'entry_weight' )[0])->Units; ?>
+                    </span>
+                    <span class="stat-label">
+                      Weight (<?php echo json_decode(get_post_meta( get_the_ID(), 'entry_weight' )[0])->Measurement; ?>)
+                    </span>
+                  </li>
+                </ul>
                 <p>
-                  Sets: <?php echo get_post_meta( get_the_ID(), 'entry_sets' )[0]; ?>
-                  / Reps: <?php echo get_post_meta( get_the_ID(), 'entry_reps' )[0]; ?>
-                  / Weight: <?php echo json_decode(get_post_meta( get_the_ID(), 'entry_weight' )[0])->Units; ?><?php echo json_decode(get_post_meta( get_the_ID(), 'entry_weight' )[0])->Measurement; ?>
-                  / Date: <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
+                  Date: <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
                 </p>
               </div>
             </a>

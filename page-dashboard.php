@@ -15,35 +15,48 @@ get_header();
 
       <h1>Dashboard</h1>
 
-    <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-
-      <!-- article -->
-      <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-        <?php the_content(); ?>
-
-        <?php comments_template( '', true ); // Remove if you don't want comments ?>
-
-        <br class="clear">
-
-        <?php edit_post_link(); ?>
-
-      </article>
-      <!-- /article -->
-
-    <?php endwhile; ?>
-
-    <?php else: ?>
-
-      <!-- article -->
-      <article>
-
-        <h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
-
-      </article>
-      <!-- /article -->
-
-    <?php endif; ?>
+      <div class="dashboard-menu-wrapper">
+        <ul id="DashboardMenu">
+          <li class="dashboard-menu-item">
+            <a href="/events/"
+              title="">
+              <div class="icon-container">
+                <span class="spacer"></span>
+                <span class="menu-item-icon material-icons">
+                  list
+                </span>
+                <span class="spacer"></span>
+              </div>
+              <div class="label-container">
+                <span class="spacer"></span>
+                <span class="menu-item-label">
+                  Event Log
+                </span>
+                <span class="spacer"></span>
+              </div>
+            </a>
+          </li>
+          <li class="dashboard-menu-item">
+            <a href="/workouts/"
+              title="">
+              <div class="icon-container">
+                <span class="spacer"></span>
+                <span class="menu-item-icon material-icons">
+                  fitness_center
+                </span>
+                <span class="spacer"></span>
+              </div>
+              <div class="label-container">
+                <span class="spacer"></span>
+                <span class="menu-item-label">
+                  Fitness
+                </span>
+                <span class="spacer"></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
 
     </section>
     <!-- /section -->

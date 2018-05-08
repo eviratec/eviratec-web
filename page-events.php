@@ -37,11 +37,11 @@ get_header();
         <ul class="cards">
         <?php while ($events->have_posts()) : ?>
           <?php $events->the_post(); ?>
-            <?php if ( !in_array( get_the_time('l, M t'), $days ) ) : ?>
-            <?php $days[count($days)] = get_the_time('l, M t'); ?>
+            <?php if ( !in_array( get_the_time('l, M j'), $days ) ) : ?>
+            <?php $days[count($days)] = get_the_time('l, M j'); ?>
             <li class="card-group-heading">
               <h3>
-                <span><?php the_time('l, M t'); ?></span>
+                <span><?php the_time('l, M j'); ?></span>
               </h3>
             </li>
             <?php endif; ?>
@@ -73,6 +73,13 @@ get_header();
             </li>
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>
+          <li style="display: flex;flex-direction: row;height:120px;align-items:center;">
+            <span class="spacer"></span>
+            <div class="progress-view-wrapper">
+              <div class="progress-indicator"></div>
+            </div>
+            <span class="spacer"></span>
+          </li>
         </ul>
       </div>
       <?php else : ?>

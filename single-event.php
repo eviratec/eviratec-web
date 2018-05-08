@@ -23,6 +23,19 @@
       </h1>
       <!-- /post title -->
 
+      <p style="margin-top: -12px;margin-left: 12px;">
+        <span class="date"
+          style="display:flex;align-items:center;color:rgba(0,0,0,0.38);">
+          <span class="material-icons"
+            style="font-size: 16px;">
+            event
+          </span>
+          <span style="font-weight: 400;margin-left: 4px;">
+            <?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?>
+          </span>
+        </span>
+      </p>
+
       <!-- post details -->
       <span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
       <span class="author"><?php _e( 'Published by', 'html5blank' ); ?> <?php the_author_posts_link(); ?></span>

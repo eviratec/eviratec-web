@@ -268,7 +268,7 @@ div.eviratec-web.eviratec-form p.form-title {
 /* Create account form */
 #wppb-register-user,
 #wppb-login-wrap {
-  padding: 0 16px;
+  padding: 0px;
 }
 #wppb-register-user input.text-input {
   width: 100%;
@@ -296,11 +296,95 @@ div.eviratec-web.eviratec-form div.form-field {
   font-size: 1.3em;
 }
 
+ul#DashboardMenu {
+  padding: 0 8px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+ul#DashboardMenu li.dashboard-menu-item {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  flex: 1;
+  margin: 0 8px;
+}
+ul#DashboardMenu li.dashboard-menu-item a {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  width: 100%;
+  padding: 24px 0 32px;
+  background: #fff;
+  border-radius: 2px;
+}
+ul#DashboardMenu li.dashboard-menu-item a .icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ul#DashboardMenu li.dashboard-menu-item a .icon-container span.menu-item-icon.material-icons {
+  font-size: 64px;
+}
+ul#DashboardMenu li.dashboard-menu-item a .label-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ul#DashboardMenu li.dashboard-menu-item a .label-container span.menu-item-label {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+ul.workout.exercise-entry-stats {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+ul.workout.exercise-entry-stats li.exercise-entry-stat {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 64px;
+  height: 64px;
+}
+ul.workout.exercise-entry-stats li.exercise-entry-stat span.stat-value {
+  font-size: 2em;
+  font-weight: 500;
+}
+ul.workout.exercise-entry-stats li.exercise-entry-stat span.stat-label {
+  font-size: 0.9em;
+  color: rgba(0,0,0,0.38);
+}
+
 
 /*------------------------------------*\
     IMAGES
 \*------------------------------------*/
 
+.progress-view-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.progress-view-wrapper .progress-indicator {
+  margin: 0 16px;
+  border: 8px solid #eee;
+  border-top: 8px solid #FFAB00;
+  border-radius: 50%;
+  min-width: 24px;
+  width: 64px;
+  max-width: 64px;
+  min-height: 64px;
+  height: 64px;
+  max-height: 64px;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 
 /*------------------------------------*\

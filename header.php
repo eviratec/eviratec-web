@@ -9,7 +9,7 @@
         <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="<?php bloginfo('description'); ?>">
 
     <?php wp_head(); ?>
@@ -33,7 +33,7 @@
 
         <!-- logo -->
         <div class="logo">
-          <a href="<?php echo home_url(); ?>">
+          <a href="<?php echo home_url() . ( is_user_logged_in() ? "\/dashboard\/" : '' ); ?>">
             <!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
             <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"
               alt="Logo"
@@ -63,7 +63,7 @@
             <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"
               alt="Logo"
               class="sidebar-logo-img"
-              style="position: relative;top: -160px;">
+              style="position: relative;top: -160px;max-width:256px;max-height:256px;">
           </header>
           <!-- nav -->
           <nav class="nav" role="navigation">
