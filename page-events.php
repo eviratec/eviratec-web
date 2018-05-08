@@ -73,14 +73,15 @@ get_header();
             </li>
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>
-          <li style="display: flex;flex-direction: row;height:120px;align-items:center;">
-            <span class="spacer"></span>
-            <div class="progress-view-wrapper">
-              <div class="progress-indicator"></div>
-            </div>
-            <span class="spacer"></span>
-          </li>
         </ul>
+        <div class="events-loading"
+          style="display: flex;flex-direction: row;height:120px;align-items:center;">
+          <span class="spacer"></span>
+          <div class="progress-view-wrapper">
+            <div class="progress-indicator"></div>
+          </div>
+          <span class="spacer"></span>
+        </div>
       </div>
       <?php else : ?>
       <p>You haven't logged any events, yet.</p>
@@ -125,6 +126,94 @@ get_header();
     </section>
     <!-- /section -->
   </main>
+
+  <script>
+  (function ($) {"use strict";
+
+    var busy = false;
+    var finished = false;
+
+    var offset = 0;
+    var lastScrollMax = 0;
+
+    $(document).ready(function () {
+      initFeed();
+    });
+
+    function isBusy () {
+      return true === busy;
+    }
+
+    function setBusy ( newValue ) {
+      busy = true === newValue ? true : false;
+    }
+
+    function isFinished () {
+      $("div.content-cards div.events-loading").hide();
+      return true === finished;
+    }
+
+    function setFinished ( newValue ) {
+      finished = true === newValue ? true : false;
+    }
+
+    function initFeed () {
+      $(window).scroll(function () {
+        if (isBusy() || isFinished()) {
+          return;
+        }
+
+        setBusy(true);
+
+        var a = $(window)[0].scrollY;
+        var b = $(window)[0].innerHeight;
+        var c = a+b;
+        var x = $("div.content-cards ul.cards").height();
+
+        var needsMore = c > lastScrollMax && c > x;
+        if (needsMore) {
+          feed();
+          console.log($(window), a, b, c, x);
+        }
+
+        lastScrollMax = c;
+      });
+    }
+
+    function feed () {
+      refreshOffset();
+
+      var req = $.get(
+        '/wp-admin/admin-ajax.php?action=eviratec_eventlog'
+        + '&type=getEvents'
+        + '&offset=' + offset
+      );
+
+      req.success(function (res) {
+        console.log(arguments);
+        var $newEls = $(res);
+        if (0 === $newEls.length || '' === res.trim()) {
+          isFinished();
+          return;
+        }
+        $newEls.appendTo($("div.content-cards ul.cards"));
+      });
+
+      req.error(function () {
+        console.log(arguments);
+      });
+
+      req.always(function () {
+        setBusy(false);
+      });
+    }
+
+    function refreshOffset () {
+      offset = $("div.content-cards ul.cards li.card").length;
+    }
+
+  })(jQuery);
+  </script>
 
 <?php get_sidebar(); ?>
 

@@ -27,7 +27,7 @@ function eviratec_eventlog_nopriv_ajax () {
     'Error' => 'Login required',
     'Echo' => $response,
   ]);
-  
+
   wp_die();
 }
 
@@ -35,7 +35,7 @@ function eviratec_eventlog_nopriv_ajax () {
 function eviratec_eventlog_ajax () {
   $response = json_encode( $_REQUEST );
 
-  header( 'Content-Type: application/json;charset=utf-8' );
+
 
   try {
     switch ( $_REQUEST['type'] ) {
@@ -48,10 +48,57 @@ function eviratec_eventlog_ajax () {
 
       case 'getEvents':
         // &type=getEvents&offset=8
-        $response = EventLogQuery::getEvents( [
+        $events = EventLogQuery::getEvents( [
           'offset' => $_REQUEST['offset'],
         ] );
+        // $response = [
+        //   $events->posts,
+        //   $events->post_count,
+        // ];
+        header( 'Content-Type: text/html;charset=utf-8' );
+        ?>
+        <?php if ($events->have_posts()) : while ($events->have_posts()) : ?>
+          <?php $events->the_post(); ?>
+            <?php if ( !in_array( get_the_time('l, M j'), $days ) ) : ?>
+            <?php $days[count($days)] = get_the_time('l, M j'); ?>
+            <li class="card-group-heading">
+              <h3>
+                <span><?php the_time('l, M j'); ?></span>
+              </h3>
+            </li>
+            <?php endif; ?>
+            <li class="card">
+              <a class="card-content"
+                href="/event/<?php the_ID(); ?>/"
+                title="<?php the_title(); ?>">
+                <!-- <div class="icon-container">
+                  <span class="material-icons">
+                    info_outline
+                  </span>
+                </div> -->
+                <div style="margin-right: 8px;line-height: 18px;">
+                  <?php the_time('H:i'); ?>
+                </div>
+                <div class="card-text">
+                  <h3>
+                    <span><?php echo get_the_title(); ?></span>
+                  </h3>
+                  <!-- <p>
+                    <?php the_time('l, M t'); ?>
+                  </p> -->
+                </div>
+                <span class="spacer"></span>
+                <span class="material-icons">
+                  chevron_right
+                </span>
+              </a>
+            </li>
+          <?php endwhile; endif; ?>
+      <?php
+      wp_die();
     }
+
+    header( 'Content-Type: application/json;charset=utf-8' );
 
     print json_encode( [
       'Success' => true,

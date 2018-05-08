@@ -21,7 +21,7 @@ class EventLogQuery {
   }
   public static function getEvents ( $query = array() ) {
     return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 101 ),
+      array ( 'posts_per_page' => 5 ),
       $query,
       array(
         'post_type'      => 'event',
