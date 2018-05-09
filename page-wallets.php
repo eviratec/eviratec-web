@@ -36,21 +36,28 @@ get_header();
         <ul class="cards">
         <?php while ($wallets->have_posts()) : ?>
           <?php $wallets->the_post(); ?>
-            <li class="card">
+            <li class="card wallet-list-item">
               <a class="card-content"
                 href="/wallet/<?php the_ID(); ?>/"
                 title="<?php the_title(); ?>">
                 <div class="icon-container">
                   <span class="material-icons">
-                    money
+                    attach_money
                   </span>
                 </div>
                 <h3>
                   <span><?php echo get_the_title(); ?></span>
                 </h3>
                 <span class="spacer"></span>
-                <span>
-                  <?php echo number_format( get_field( 'wallet_balance', get_the_ID()), 2 ); ?>
+                <span class="wallet-balance">
+                  <?php echo str_replace( '-', '', number_format( get_field( 'wallet_balance', get_the_ID()), 2 ) ); ?>
+                </span>
+                <span class="wallet-balance-type">
+                  <?php if ( get_field( 'wallet_balance', get_the_ID()) + 0 < 0 ) : ?>
+                    DR
+                  <?php else : ?>
+                    CR
+                  <?php endif; ?>
                 </span>
                 <span class="material-icons">
                   chevron_right

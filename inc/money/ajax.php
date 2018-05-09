@@ -59,11 +59,11 @@ function eviratec_money_ajax () {
         ?>
         <?php if ($events->have_posts()) : while ($events->have_posts()) : ?>
           <?php $events->the_post(); ?>
-            <?php if ( !in_array( get_the_time('l, M j'), $days ) ) : ?>
-            <?php $days[count($days)] = get_the_time('l, M j'); ?>
+            <?php if ( !in_array( get_the_time('M Y'), $days ) ) : ?>
+            <?php $days[count($days)] = get_the_time('M Y'); ?>
             <li class="card-group-heading">
               <h3>
-                <span><?php the_time('l, M j'); ?></span>
+                <span><?php the_time('M Y'); ?></span>
               </h3>
             </li>
             <?php endif; ?>

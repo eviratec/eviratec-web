@@ -254,6 +254,39 @@ div.eviratec-web.eviratec-form p.form-title {
 .content-cards ul.cards li.card a.card-content .card-text p {
   margin: 0;
 }
+.content-cards ul.cards li.card.transaction-list-item a.card-content .transaction-type {
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 1;
+  margin-bottom: 4px;
+  margin-right: 8px;
+}
+.content-cards ul.cards li.card.transaction-list-item a.card-content .transaction-date {
+  margin-right: 16px;
+  display:flex;
+  flex-direction:column;
+}
+.content-cards ul.cards li.card.transaction-list-item a.card-content .transaction-date .day {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  color: rgba(0,0,0,0.38);
+}
+.content-cards ul.cards li.card.transaction-list-item a.card-content h3 {
+  font-weight: 500;
+}
+.content-cards ul.cards li.card.transaction-list-item a.card-content .transaction-amt,
+.content-cards ul.cards li.card.wallet-list-item a.card-content .wallet-balance {
+  margin-right: 8px;
+  line-height: 18px;
+  font-size: 1.4em;
+  color:rgba(0,0,0,0.87);
+}
+.content-cards ul.cards li.card.wallet-list-item a.card-content .wallet-balance-type {
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 1;
+}
 #respond .comment-reply-title {
   display: none;
 }

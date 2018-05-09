@@ -61,7 +61,7 @@ get_header();
               <div class="icon-container">
                 <span class="spacer"></span>
                 <span class="menu-item-icon material-icons">
-                  money
+                  attach_money
                 </span>
                 <span class="spacer"></span>
               </div>
