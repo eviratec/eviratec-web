@@ -110,8 +110,17 @@ get_header();
 
     var offset = 0;
 
+    var documentHeight = 0;
+
+    refreshDocumentHeight();
+    initFeed();
+
     $(document).ready(function () {
-      initFeed();
+
+    });
+
+    $(document).load(function () {
+      refreshDocumentHeight();
     });
 
     function isBusy () {
@@ -123,12 +132,15 @@ get_header();
     }
 
     function isFinished () {
-      $("div.content-cards div.events-loading").hide();
       return true === finished;
     }
 
     function setFinished ( newValue ) {
       finished = true === newValue ? true : false;
+      if (false === finished) {
+        return;
+      }
+      $("div.content-cards div.events-loading").hide();
     }
 
     function initFeed () {
@@ -142,12 +154,15 @@ get_header();
         var a = $(window)[0].scrollY;
         var b = $(window)[0].innerHeight;
         var c = a+b;
-        var x = $("div.content-cards ul.cards").height();
+        var x = getDocumentHeight() - 200;
 
         var needsMore = c > x;
-        if (needsMore) {
-          feed();
+        if (!needsMore) {
+          setBusy(false);
+          return;
         }
+
+        feed();
       });
     }
 
@@ -163,10 +178,11 @@ get_header();
       req.success(function (res) {
         var $newEls = $(res);
         if (0 === $newEls.length || '' === res.trim()) {
-          isFinished();
+          setFinished( true );
           return;
         }
         $newEls.appendTo($("div.content-cards ul.cards"));
+        refreshDocumentHeight();
       });
 
       req.error(function () {
@@ -180,6 +196,15 @@ get_header();
 
     function refreshOffset () {
       offset = $("div.content-cards ul.cards li.card").length;
+    }
+
+    function refreshDocumentHeight () {
+      documentHeight = $(document).height();
+      console.log(documentHeight);
+    }
+
+    function getDocumentHeight () {
+      return documentHeight;
     }
 
   })(jQuery);
