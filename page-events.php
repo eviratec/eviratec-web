@@ -109,7 +109,6 @@ get_header();
     var finished = false;
 
     var offset = 0;
-    var lastScrollMax = 0;
 
     $(document).ready(function () {
       initFeed();
@@ -145,13 +144,10 @@ get_header();
         var c = a+b;
         var x = $("div.content-cards ul.cards").height();
 
-        var needsMore = c > lastScrollMax && c > x;
+        var needsMore = c > x;
         if (needsMore) {
           feed();
-          console.log($(window), a, b, c, x);
         }
-
-        lastScrollMax = c;
       });
     }
 
@@ -165,7 +161,6 @@ get_header();
       );
 
       req.success(function (res) {
-        console.log(arguments);
         var $newEls = $(res);
         if (0 === $newEls.length || '' === res.trim()) {
           isFinished();
