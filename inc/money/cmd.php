@@ -63,14 +63,23 @@ class MoneyCmd {
   }
 
   public static function setWalletName ( $wallet_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $wallet_id ) ) {
+      return;
+    }
     update_field( 'wallet_name', $new_value, $wallet_id );
   }
 
   public static function deleteWallet ( $wallet_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $wallet_id ) ) {
+      return;
+    }
 
   }
 
   public static function deleteTransaction ( $transaction_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $transaction_id ) ) {
+      return;
+    }
 
   }
 }

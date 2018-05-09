@@ -107,30 +107,51 @@ class FitnessCmd {
   }
 
   public static function setEntrySets ( $entry_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $entry_id ) ) {
+      return;
+    }
 
   }
 
   public static function setEntryReps ( $entry_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $entry_id ) ) {
+      return;
+    }
 
   }
 
   public static function setEntryWeight ( $entry_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $entry_id ) ) {
+      return;
+    }
 
   }
 
   public static function setEntryDate ( $entry_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $entry_id ) ) {
+      return;
+    }
 
   }
 
   public static function deleteWorkout ( $workout_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $workout_id ) ) {
+      return;
+    }
 
   }
 
   public static function deleteExercise ( $exercise_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $exercise_id ) ) {
+      return;
+    }
 
   }
 
   public static function deleteEntry ( $entry_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $entry_id ) ) {
+      return;
+    }
 
   }
 }

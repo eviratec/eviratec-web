@@ -37,6 +37,18 @@ function eviratec_todo_ajax () {
 
   try {
     switch ( $_REQUEST['type'] ) {
+      case 'setEntryDone':
+        $response = TodoCmd::setEntryDone(
+           $_REQUEST['entry_id']
+        );
+        break;
+
+      case 'setEntryTodo':
+        $response = TodoCmd::setEntryTodo(
+           $_REQUEST['entry_id']
+        );
+        break;
+
       case 'createList':
         $response = TodoCmd::createList(
            $_REQUEST['name'],

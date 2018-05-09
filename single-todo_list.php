@@ -151,6 +151,8 @@
     }
 
     function initFeed () {
+      bindCheckboxes($("div.content-cards ul.cards li.card"));
+
       $(window).scroll(function () {
         if (isBusy() || isFinished()) {
           return;
@@ -191,6 +193,7 @@
           return;
         }
         $newEls.appendTo($("div.content-cards ul.cards"));
+        bindCheckboxes($newEls);
       });
 
       req.error(function () {
@@ -199,6 +202,41 @@
 
       req.always(function () {
         setBusy(false);
+      });
+    }
+
+    function bindCheckboxes ($liEls) {
+      $liEls.each(function (i, $liEl) {
+        console.log($liEl, $($liEl).find('.entry-todo-toggle'));
+        $($liEl).find('.entry-todo-toggle').click(function ( $ev ) {
+          $ev.preventDefault();
+          toggleEntryDone($($liEl).find('a.card-content').attr('href').split(/\//g)[2], $($liEl));
+        })
+      });
+    }
+
+    function toggleEntryDone ( todoEntryID, $el ) {
+      console.log('Toggle entry done', todoEntryID);
+
+      var rType = $el.hasClass('entry-done') ? 'setEntryTodo' : 'setEntryDone';
+
+      var req = $.get(
+        '/wp-admin/admin-ajax.php?action=eviratec_todo'
+        + '&type=' + rType
+        + '&entry_id=' + todoEntryID
+      );
+
+      req.success(function (res) {
+        console.log(arguments);
+
+      });
+
+      req.error(function () {
+        console.log(arguments);
+      });
+
+      req.always(function () {
+
       });
     }
 

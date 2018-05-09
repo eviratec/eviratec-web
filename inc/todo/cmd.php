@@ -57,22 +57,37 @@ class TodoCmd {
   }
 
   public static function setListName ( $list_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $list_id ) ) {
+      return;
+    }
     update_field( 'list_name', sanitize_text_field( $new_value ), $list_id );
   }
 
   public static function setEntryDone ( $entry_id ) {
-    update_field( 'entry_done', '1', $entry_id );
+    if ( wp_get_current_user()->ID !== (int) get_the_author_meta( 'ID', $entry_id )->ID ) {
+      return;
+    }
+    update_field( 'entry_done', time(), $entry_id );
   }
 
   public static function setEntryTodo ( $entry_id ) {
+    if ( wp_get_current_user()->ID !== (int) get_the_author_meta( 'ID', $entry_id )->ID ) {
+      return;
+    }
     update_field( 'entry_done', '0', $entry_id );
   }
 
   public static function deleteList ( $list_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $list_id ) ) {
+      return;
+    }
 
   }
 
   public static function deleteEntry ( $entry_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $entry_id ) ) {
+      return;
+    }
 
   }
 }

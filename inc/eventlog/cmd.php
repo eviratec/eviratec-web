@@ -37,14 +37,23 @@ class EventLogCmd {
   }
 
   public static function setEventSummary ( $event_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $event_id ) ) {
+      return;
+    }
     update_field( "event_summary", $new_value, $event_id );
   }
 
   public static function setEventTags ( $event_id, $new_value ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $event_id ) ) {
+      return;
+    }
     update_field( "event_tags", json_encode( $new_value ), $event_id );
   }
 
   public static function deleteEvent ( $event_id ) {
+    if ( wp_get_current_user()->ID !== get_the_author_meta( 'ID', $event_id ) ) {
+      return;
+    }
 
   }
 }
