@@ -74,6 +74,25 @@ get_header();
               </div>
             </a>
           </li>
+          <li class="dashboard-menu-item">
+            <a href="/todo-lists/"
+              title="">
+              <div class="icon-container">
+                <span class="spacer"></span>
+                <span class="menu-item-icon material-icons">
+                  check
+                </span>
+                <span class="spacer"></span>
+              </div>
+              <div class="label-container">
+                <span class="spacer"></span>
+                <span class="menu-item-label">
+                  To-Do
+                </span>
+                <span class="spacer"></span>
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
 
