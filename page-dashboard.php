@@ -23,7 +23,7 @@ get_header();
               <div class="icon-container">
                 <span class="spacer"></span>
                 <span class="menu-item-icon material-icons">
-                  list
+                  list_alt
                 </span>
                 <span class="spacer"></span>
               </div>
