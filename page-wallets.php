@@ -49,6 +49,9 @@ get_header();
                   <span><?php echo get_the_title(); ?></span>
                 </h3>
                 <span class="spacer"></span>
+                <span>
+                  <?php echo number_format( get_field( 'wallet_balance', get_the_ID()), 2 ); ?>
+                </span>
                 <span class="material-icons">
                   chevron_right
                 </span>

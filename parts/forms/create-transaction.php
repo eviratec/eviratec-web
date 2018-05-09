@@ -4,7 +4,8 @@
     MoneyCmd::createTransaction(
       $_REQUEST['TransactionWalletID'],
       $_REQUEST['TransactionDescription'],
-      $_REQUEST['TransactionAmt']
+      $_REQUEST['TransactionAmt'],
+      $_REQUEST['TransactionType']
     );
   }
 
@@ -37,6 +38,20 @@
       placeholder="E.g. 10.00"
       value=""
       required>
+  </div>
+
+  <div class="form-field">
+    <label for="TransactionType">
+      Type
+    </label>
+
+    <span class="spacer"></span>
+
+    <select id="TransactionType"
+      name="TransactionType">
+      <option value="CR">Credit (+)</option>
+      <option value="DR">Debit (-)</option>
+    </select>
   </div>
 
   <button id="CreateTransaction">

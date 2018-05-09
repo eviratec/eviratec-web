@@ -32,11 +32,12 @@ class MoneyCmd {
     ));
 
     update_field( 'wallet_name', $name, $wallet_id );
+    update_field( 'wallet_balance', '0.00', $wallet_id );
 
     return $wallet_id;
   }
 
-  public static function createTransaction ( $wallet_id, $description, $amt ) {
+  public static function createTransaction ( $wallet_id, $description, $amt, $type = 'CR' ) {
     $transaction_id = null;
 
     $transaction_id = wp_insert_post(array(
@@ -50,6 +51,13 @@ class MoneyCmd {
     update_field( 'wallet_id', $wallet_id, $transaction_id );
     update_field( 'transaction_description', $description, $transaction_id );
     update_field( 'transaction_amt', $amt, $transaction_id );
+    update_field( 'transaction_type', $type, $transaction_id );
+
+    update_field(
+      'wallet_balance',
+      floatval(get_field( 'wallet_balance', $wallet_id )) + floatval(( 'CR' === $type ? $amt : -$amt )),
+      $wallet_id
+    );
 
     return $transaction_id;
   }

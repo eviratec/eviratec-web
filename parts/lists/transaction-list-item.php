@@ -16,8 +16,15 @@
       </h3>
     </div>
     <span class="spacer"></span>
+    <span>
+      <?php if ( 'DR' === get_field( 'transaction_type', get_the_ID() ) ) : ?>
+        -
+      <?php elseif ( 'CR' === get_field( 'transaction_type', get_the_ID() ) ) : ?>
+        +
+      <?php endif; ?>
+    </span>
     <div style="margin-right: 8px;line-height: 18px;font-size:1.1em;color:rgba(0,0,0,0.87)">
-      <?php echo get_field( 'transaction_amt', get_the_ID() ); ?>
+      <?php echo number_format( get_field( 'transaction_amt', get_the_ID() ), 2 ); ?>
     </div>
     <span class="material-icons">
       chevron_right
