@@ -37,7 +37,7 @@ class FitnessQuery {
         'post_type'      => 'workout_exercise',
         'author'         => wp_get_current_user()->ID,
         'meta_key'       => 'workout_id',
-        'meta_value'     => $workout_id,
+        'meta_value'     => (int) $workout_id,
       )
     ) );
   }
@@ -49,7 +49,7 @@ class FitnessQuery {
         'post_type'      => 'workout_entry',
         'author'         => wp_get_current_user()->ID,
         'meta_key'       => 'exercise_id',
-        'meta_value'     => $exercise_id,
+        'meta_value'     => (int) $exercise_id,
       )
     ) );
   }
@@ -61,7 +61,7 @@ class FitnessQuery {
         'post_type'      => 'workout',
         'author'         => wp_get_current_user()->ID,
         'meta_key'       => 'exercise_type_id',
-        'meta_value'     => $exercise_type_id,
+        'meta_value'     => (int) $exercise_type_id,
       )
     ) );
   }

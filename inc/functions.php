@@ -21,9 +21,13 @@ require_once 'scripts.php';
 require_once 'styles.php';
 
 require_once 'types.eventlog.php';
-require_once 'types.fitness.php';
-require_once 'types.money.php';
-
 require_once 'eventlog/functions.php';
+
+require_once 'types.fitness.php';
 require_once 'fitness/functions.php';
+
+require_once 'types.money.php';
 require_once 'money/functions.php';
+
+require_once 'types.todo.php';
+require_once 'todo/functions.php';

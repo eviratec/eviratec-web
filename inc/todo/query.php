@@ -15,24 +15,41 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-class EventLogQuery {
+class TodoQuery {
   public function __construct () {
 
   }
-  public static function getEvents ( $query = array() ) {
+  public static function getLists ( $query = array() ) {
     return new WP_Query( array_merge(
       array ( 'posts_per_page' => 100 ),
       $query,
       array(
-        'post_type'      => 'event',
+        'post_type'      => 'todo_list',
         'author'         => wp_get_current_user()->ID,
       )
     ) );
   }
-  public static function getEventsByTag ( $tag_id, $query = array() ) {
-
+  public static function getEntriesByList ( $list_id, $query = array() ) {
+    return new WP_Query( array_merge(
+      array ( 'posts_per_page' => 100 ),
+      $query,
+      array(
+        'post_type'      => 'todo_entry',
+        'author'         => wp_get_current_user()->ID,
+        'meta_key'       => 'entry_list_id',
+        'meta_value'     => (int) $list_id,
+      )
+    ) );
   }
-  public static function getTags ( $query = array() ) {
-
+  public static function getListsByList ( $list_id, $query = array() ) {
+    return new WP_Query( array_merge(
+      array ( 'posts_per_page' => 100 ),
+      $query,
+      array(
+        'post_type'      => 'todo_list',
+        'author'         => wp_get_current_user()->ID,
+        'post_parent'    => (int) $list_id,
+      )
+    ) );
   }
 }

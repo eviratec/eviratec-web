@@ -15,24 +15,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-class EventLogQuery {
-  public function __construct () {
-
-  }
-  public static function getEvents ( $query = array() ) {
-    return new WP_Query( array_merge(
-      array ( 'posts_per_page' => 100 ),
-      $query,
-      array(
-        'post_type'      => 'event',
-        'author'         => wp_get_current_user()->ID,
-      )
-    ) );
-  }
-  public static function getEventsByTag ( $tag_id, $query = array() ) {
-
-  }
-  public static function getTags ( $query = array() ) {
-
-  }
+function todo_rewrite () {
+  add_rewrite_rule( '^todo-list/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top' );
+  add_rewrite_rule( '^todo-entry/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top' );
 }
+add_action( 'init', 'todo_rewrite' );

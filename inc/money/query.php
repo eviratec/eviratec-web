@@ -37,7 +37,7 @@ class MoneyQuery {
         'post_type'      => 'wallet_tx',
         'author'         => wp_get_current_user()->ID,
         'meta_key'       => 'wallet_id',
-        'meta_value'     => $wallet_id,
+        'meta_value'     => (int) $wallet_id,
       )
     ) );
   }
