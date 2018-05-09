@@ -35,8 +35,6 @@ function eviratec_todo_nopriv_ajax () {
 function eviratec_todo_ajax () {
   $response = json_encode( $_REQUEST );
 
-
-
   try {
     switch ( $_REQUEST['type'] ) {
       case 'createList':
@@ -47,26 +45,14 @@ function eviratec_todo_ajax () {
         break;
 
       case 'getEntriesByList':
-        // &type=getEvents&offset=8
+        // &type=getEntriesByList&offset=8
         $entries = TodoQuery::getEntriesByList( [
           'offset' => $_REQUEST['offset'],
         ] );
-        // $response = [
-        //   $events->posts,
-        //   $events->post_count,
-        // ];
         header( 'Content-Type: text/html;charset=utf-8' );
         ?>
         <?php if ($entries->have_posts()) : while ($entries->have_posts()) : ?>
           <?php $entries->the_post(); ?>
-            <?php if ( !in_array( get_the_time('M Y'), $days ) ) : ?>
-            <?php $days[count($days)] = get_the_time('M Y'); ?>
-            <li class="card-group-heading">
-              <h3>
-                <span><?php the_time('M Y'); ?></span>
-              </h3>
-            </li>
-            <?php endif; ?>
             <?php get_template_part( 'parts/lists/todo-entry-list-item'); ?>
           <?php endwhile; endif; ?>
       <?php

@@ -15,9 +15,9 @@
       <h3>
         <span><?php echo get_the_title(); ?></span>
       </h3>
-      <p>
+      <!-- <p>
         <?php the_time('g:i a l, M t'); ?>
-      </p>
+      </p> -->
     </div>
     <span class="spacer"></span>
     <span class="material-icons">

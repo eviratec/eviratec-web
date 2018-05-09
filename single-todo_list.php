@@ -37,7 +37,6 @@
     <?php
     $list_id = get_the_ID();
     $entries = TodoQuery::getEntriesByList( $list_id );
-    $days = array();
     ?>
 
     <h2>Tasks</h2>
@@ -47,14 +46,6 @@
       <ul class="cards">
       <?php while ($entries->have_posts()) : ?>
         <?php $entries->the_post(); ?>
-          <?php if ( !in_array( get_the_time('M Y'), $days ) ) : ?>
-          <?php $days[count($days)] = get_the_time('M Y'); ?>
-          <li class="card-group-heading">
-            <h3>
-              <span><?php the_time('M Y'); ?></span>
-            </h3>
-          </li>
-          <?php endif; ?>
           <?php get_template_part( 'parts/lists/todo-entry-list-item'); ?>
         <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>
